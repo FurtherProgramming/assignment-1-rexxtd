@@ -1,3 +1,5 @@
+package com.myassignment.app;
+
 import java.util.Scanner;
 import java.io.*;
 import java.util.*;
