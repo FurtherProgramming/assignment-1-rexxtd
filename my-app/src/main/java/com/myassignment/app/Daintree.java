@@ -73,7 +73,9 @@ public class Daintree
                 case "3":
                 {
                     System.out.println("Your Shopping Cart contains the following: ");
+                    listCarts();
                     System.out.println("What do you want to remove: ");
+                    removeBook();
                     System.out.println("Item removed from Shopping Cart");
                     System.out.println("Press 'Enter' to continue");
                     sc.nextLine();
@@ -227,6 +229,19 @@ public class Daintree
         for (Book b:books)
         {
             System.out.println(b);
+        }
+    }
+    
+    public void removeBook()
+    {
+        int userInput = sc.nextInt();
+        for (int i = 0; i< carts.size(); i++)
+        {
+            Cart c = carts.get(i);
+            if (c.getBookID() == userInput)
+            {
+                carts.remove(c);
+            }
         }
     }
 }

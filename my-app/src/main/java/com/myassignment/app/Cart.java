@@ -44,8 +44,8 @@ public class Cart
     public String toString()
     {
         if (ebook)
-            return "'" + title + "'; buy as: E-book "; 
+            return bookID + ". ' " + title + "'; buy as: E-book "; 
         else 
-            return "'" + title + "'; buy as: Print book "; 
+            return bookID + ". '" + title + "'; buy as: Print book "; 
     }
 }
