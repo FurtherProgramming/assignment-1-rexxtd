@@ -6,8 +6,7 @@ import java.util.*;
 public class Daintree
 {
     static int physcost = 50;
-    static int ecost = 8;
-    static int totalprice; 
+    static int ecost = 8; 
     static Scanner sc = new Scanner(System.in);
 
     private ArrayList<Book> books;
@@ -26,8 +25,6 @@ public class Daintree
                              new Book ("Java Program Design (Cohoon and Davidson)", 1, true)};
         for(int i = 0; i< arrOfBooks.length; i++)
             books.add(arrOfBooks[i]);
-        
-        Cart[] arrOfCarts = {};
     }
     
     public static void main(String[] args) 
@@ -36,6 +33,7 @@ public class Daintree
         System.out.println("Welcome to Daintree!");
         dt.populateBooks();
         dt.loadOptions();
+        Cart[] arrOfCarts = {};
     }
 
     public void loadOptions()
@@ -74,6 +72,7 @@ public class Daintree
                 {
                     System.out.println("Your Shopping Cart contains the following: ");
                     listCarts();
+                    System.out.println("0. Cancel");   
                     System.out.println("What do you want to remove: ");
                     removeBook();
                     System.out.println("Item removed from Shopping Cart");
@@ -83,8 +82,7 @@ public class Daintree
                 }
                 case "4":
                 {
-                    System.out.println("You have purchased items to the total value of $" + totalprice);
-                    System.out.println("Thanks for shopping with Daintree!");
+                    checkOut();
                     System.out.println("Press 'Enter' to continue");
                     sc.nextLine();
                     break;
@@ -141,7 +139,7 @@ public class Daintree
         {
             System.out.println("What is your selection: ");
             int prompt = sc.nextInt();
-            if (prompt > j) //give error if user type wrong input
+            if (prompt >= i || prompt <= 0) //give error if user type wrong input
                 {
                     System.out.println("Invalid selection, please try again.");
                     sc.nextLine();
@@ -218,9 +216,11 @@ public class Daintree
 
     public void listCarts() 
     {
+        int i = 1;
         for (Cart c:carts) 
         {
-            System.out.println(c);
+            System.out.println(i + ". "+ c);
+            i++;
         }
     }
 
@@ -235,13 +235,31 @@ public class Daintree
     public void removeBook()
     {
         int userInput = sc.nextInt();
+        if ((userInput >= 0) && (userInput <carts.size()))
         for (int i = 0; i< carts.size(); i++)
         {
             Cart c = carts.get(i);
-            if (c.getBookID() == userInput)
+            if (userInput ==0)
             {
                 carts.remove(c);
             }
         }
+    }
+
+    public void checkOut()
+    {
+        int totalprice = 0;
+        for (Cart c:carts)
+        {
+            if (c.getEbook() == false)
+                totalprice = totalprice + physcost;
+            else 
+                totalprice = totalprice + ecost;
+        }
+
+        carts.removeAll(carts);
+
+        System.out.println("You have purchased items to the total value of $" + totalprice);
+        System.out.println("Thanks for shopping with Daintree!");
     }
 }

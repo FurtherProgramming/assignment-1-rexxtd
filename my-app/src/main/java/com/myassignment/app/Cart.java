@@ -41,11 +41,16 @@ public class Cart
         this.ebook = ebook;
     }
 
+    public void setBookID(int bookID)
+    {
+        this.bookID = bookID;
+    }
+
     public String toString()
     {
         if (ebook)
-            return bookID + ". ' " + title + "'; buy as: E-book "; 
+            return title + "'; buy as: E-book "; 
         else 
-            return bookID + ". '" + title + "'; buy as: Print book "; 
+            return title + "'; buy as: Print book "; 
     }
 }
