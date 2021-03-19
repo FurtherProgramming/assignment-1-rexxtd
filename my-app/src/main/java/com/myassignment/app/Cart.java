@@ -2,18 +2,17 @@ package com.myassignment.app;
 
 public class Cart
 {
-    private int bookID;
     private String title;
-    static int nextID = 1;
+    private String author;
     boolean ebook = false;
 
     public Cart() {}
 
-    public Cart(String title, boolean ebook)
+    public Cart(String title, String author, boolean ebook)
     {
         this.title = title;
+        this.author = author;
         this.ebook = ebook;
-        bookID = nextID++;
     }
 
     public String getTitle()
@@ -21,9 +20,9 @@ public class Cart
         return title;
     }
 
-    public int getBookID()
+    public String getAuthor()
     {
-        return bookID;
+        return author;
     }
 
     public boolean getEbook()
@@ -36,21 +35,21 @@ public class Cart
         this.title = title;
     }
 
+    public void setAuthor(String author)
+    {
+        this.author = author;
+    }
+
     public void setEbook(boolean ebook)
     {
         this.ebook = ebook;
     }
 
-    public void setBookID(int bookID)
-    {
-        this.bookID = bookID;
-    }
-
     public String toString()
     {
         if (ebook)
-            return title + "'; buy as: E-book "; 
+            return title + " -- " + author + ", buy as: E-book "; 
         else 
-            return title + "'; buy as: Print book "; 
+            return title + " -- " + author + ", buy as: Print book "; 
     }
 }
