@@ -8,7 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 
 @RunWith(Parameterized.class)
 public class BookStoreTest 
@@ -33,7 +32,7 @@ public class BookStoreTest
         this.author = author;
     }
 
-    @Parameters
+    @Parameterized.Parameters
         public static Collection<Object[]> getTestData() {
             return Arrays.asList(new Object[][]{
                     {"Absolute Java", "Savitch"},
