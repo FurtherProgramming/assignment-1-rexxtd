@@ -46,8 +46,6 @@ public class BookStoreTest
     @Test
     public void TestTitle() throws Exception
     {
-        bs = new BookStore();
-        b = new Book();
         bs.populateBooks();
         for (Book b: books)
         {
